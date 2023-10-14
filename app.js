@@ -17,6 +17,7 @@ const dateToday = (req, res, next) => {
 };
 
 app.set('view engine', 'ejs');
+mongoose.set('strictQuery', true)
 
 app.use(dateToday);
 app.use(express.static('public'));
