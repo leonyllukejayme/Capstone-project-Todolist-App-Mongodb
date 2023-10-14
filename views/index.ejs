@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<%- include('partials/header.ejs') %>
+
+	<body class="c-bg">
+		
+		<%- include('partials/navbar.ejs') %>
+
+		<div class="container d-flex justify-content-center mt-5">
+			<div class="card mx-3" style="width: 30rem; min-height: 500px">
+				<% if (listTitle === "Today") { %>
+					<div class="card-header text-center"><%= date %></div>
+				<% }else{ %>
+					<div class="card-header text-center"><%= listTitle %></div>
+				<% } %>
+				<div class="m-3">
+					<form class="d-flex gap-3" action="/add" method="POST">
+						<input class="form-control" placeholder="New Item" type="text" name="newItem" required/>
+						<button class="btn btn-dark" type="submit" name="list" value="<%= listTitle %>">Add</button>
+					</form>
+				</div>
+				<ul class="list-group list-group-flush border-bottom">
+					<% todolist.forEach((todo) => { %>
+						<li class="list-group-item">
+							<form action="/delete" method="post">
+								<input
+								class="form-check-input me-1"
+								type="checkbox"
+								name="checkbox"
+								value="<%= todo._id %>"
+								onChange="this.form.submit()" />
+								<label class="form-check-label" for="Checkbox"><%= todo.name %></label>
+								<input type="hidden" name="listName" value="<%= listTitle %>" />
+							</form>
+						</li>
+					<% }) %>
+				</ul>
+			</div>
+		</div>
+
+		<%- include('partials/footer.ejs') %>
+
+		<%- include('partials/script.ejs') %>
+	</body>
+</html>

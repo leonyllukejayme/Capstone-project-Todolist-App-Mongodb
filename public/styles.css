@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
+.c-bg{
+    background: radial-gradient(circle, rgba(103,133,172,1) 3%, rgba(94,101,102,1) 100%);
+    font-family: 'Outfit', sans-serif;
+}
+.checkbox,input:checked + label{
+    text-decoration: line-through;
+}
